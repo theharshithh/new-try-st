@@ -52,24 +52,17 @@ def home_page():
     st.title("Swift-Trials v1.0")
     st.markdown("<div class='page-container'>", unsafe_allow_html=True)
     st.write("#### Drug Data:")
-    
     smiles_input_key = "smiles_input"  # Unique key for the input field
     smiles = st.text_input("Enter the SMILES string", key=smiles_input_key, placeholder="Eg. CC(=O)OC1=CC=CC=C1C(=O)O")
-    search_btn_key = "search_button"  # Unique key for the search button
-    if st.button("Search", key='search_btn_key'):
+    if st.button("Search", key='search_btn_home'):
         inchi_key, superclass, class_, subclass, molecular_framework, pathway = get_classyfire_info(smiles)
         compound = Chem.MolFromSmiles(smiles)
         if compound is not None:
-            # image = Draw.MolToImage(compound)
             name = compound.GetProp("_Name") if "_Name" in compound.GetPropNames() else "N/A"
-            if name is 'N/A':
-                name= get_compound_name_from_smiles(smiles)
-            
             formula = rdMolDescriptors.CalcMolFormula(compound)
             weight = rdMolDescriptors.CalcExactMolWt(compound)
-            
-            # st.image(image)
-            st.write("Molecular Formula", formula)
+                
+            st.write("Molecular Formula:", formula)
             st.write("Molecular Weight:", str(round(weight, 2)))
             st.write(f"InChIKey: {inchi_key}")
             st.write(f"Class: {class_}")
@@ -82,7 +75,7 @@ def home_page():
 def toxicity():
     st.title("Toxicity Report")
     st.markdown("<div class='page-container'>", unsafe_allow_html=True)
-    smile_st = st.text_input("Search for Individual Toxicity Parameter", placeholder="SMILE String Eg. CCN")
+    smile_st = st.text_input("Search for Individual Toxicity Parameter", placeholder="SMILE String Eg. CCCN")
     toxicity_param = st.selectbox('Select a Parameter:', options)
     if st.button("Submit"):
         st.write(get_toxicity_data(smile_st, toxicity_param))

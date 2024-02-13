@@ -142,5 +142,3 @@ def get_toxicity_data(smiles, toxicity_name):
 
 
 output_data = get_toxicity_data("CCCCOC(=O)C=C", "Blood Brain Barrier")
-print(output_data)
-

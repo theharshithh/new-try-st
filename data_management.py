@@ -12,7 +12,7 @@ st.set_page_config(
     page_icon="👋",
 )
 
-smiles = st.text_input("Enter the SMILES string of the compound", "CCO")
+smiles = st.text_input("Enter the SMILES string of the compound", placeholder="CCO")
 
 def get_compound_name_from_smiles(smiles):
     try:
