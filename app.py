@@ -16,36 +16,36 @@ from patient_manage import read_pdf, patient_flag
 from complete_tox_report import get_parameters
 
 flag_result ='' 
-st.markdown(
-    """
-    <style>
-    .main-title {
-        font-size: 36px;
-        color: #333;
-        margin-bottom: 30px;
-        text-align: center;
-    }
-    .page-container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-    }
-    .btn-primary {
-        background-color: #007bff;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .btn-primary:hover {
-        background-color: #0056b3;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# st.markdown(
+#     """
+#     <style>
+#     .main-title {
+#         font-size: 36px;
+#         color: #333;
+#         margin-bottom: 30px;
+#         text-align: center;
+#     }
+#     .page-container {
+#         max-width: 800px;
+#         margin: auto;
+#         padding: 20px;
+#     }
+#     .btn-primary {
+#         background-color: #007bff;
+#         color: white;
+#         padding: 10px 20px;
+#         border: none;
+#         border-radius: 5px;
+#         cursor: pointer;
+#         transition: background-color 0.3s;
+#     }
+#     .btn-primary:hover {
+#         background-color: #0056b3;
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 
 # Home page dir; 
 def home_page():
@@ -129,11 +129,16 @@ def patient_flagging_page():
         st.write("Reviewed Patient Details:")
         st.table(reviewed_patients)
 
+# def similarity_score():
+    
+
 # Navigation
 pages = {
     "Home": home_page,
     "Toxicity Report": toxicity,
     "Patient Flagging": patient_flagging_page
+    # , 
+    # "Similarity Score": 
 }
 
 selection = st.sidebar.radio("Navigate:", list(pages.keys()))
